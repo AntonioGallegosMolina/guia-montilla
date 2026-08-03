@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { LEGAL, SITE } from "../data/site";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Anuncia tu negocio en Montilla" description="Destaca tu bodega, restaurante o alojamiento en la guía local de Montilla.">
@@ -31,6 +33,15 @@ import { LEGAL, SITE } from "../data/site";
             <li>Primero en tu categoría</li>
             <li>Etiqueta destacado</li>
             <li>Fotos de Google Maps</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <h3>Banner</h3>
+          <p class="tier-price">69 €<small>/mes</small></p>
+          <ul>
+            <li>Anuncio en blog y categorías</li>
+            <li>Sustituye a AdSense en ese hueco</li>
+            <li>Enlace a tu ficha o web</li>
           </ul>
         </div>
         <div class="tier">

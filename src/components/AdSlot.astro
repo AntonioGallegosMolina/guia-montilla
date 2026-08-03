@@ -1,0 +1,71 @@
+---
+import { ADS, type AdPlacement } from "../data/site";
+import { getLocalAd, getAdSenseSlot, shouldRenderAdSlot } from "../lib/ads";
+
+interface Props {
+  placement: AdPlacement;
+  format?: "aside" | "horizontal" | "rectangle";
+}
+
+const { placement, format = "horizontal" } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const local = getLocalAd(placement);
+const slotId = getAdSenseSlot(placement);
+const show = shouldRenderAdSlot(placement);
+const client = ADS.adsenseClient;
+
+function resolveHref(href: string) {
+  if (/^https?:\/\//i.test(href)) return href;
+  return `${base}${href.replace(/^\//, "")}`;
+}
+
+function resolveImage(src: string) {
+  if (!src) return "";
+  if (/^https?:\/\//i.test(src)) return src;
+  return `${base}${src.replace(/^\//, "")}`;
+}
+---
+
+{show && (
+  <aside
+    class:list={["ad-slot", `ad-slot--${format}`]}
+    data-placement={placement}
+    aria-label={local ? "Patrocinio" : "Anuncio"}
+  >
+    {local ? (
+      <a
+        class="ad-slot__local"
+        href={resolveHref(local.href)}
+        rel="sponsored noopener"
+        {...(/^https?:\/\//i.test(local.href) ? { target: "_blank" } : {})}
+      >
+        <span class="ad-slot__label">{local.sponsorLabel || "Patrocinado"}</span>
+        {local.image && (
+          <img
+            class="ad-slot__img"
+            src={resolveImage(local.image)}
+            alt=""
+            width="600"
+            height="200"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <span class="ad-slot__title">{local.title}</span>
+        {local.subtitle && <span class="ad-slot__sub">{local.subtitle}</span>}
+      </a>
+    ) : (
+      <div class="ad-slot__adsense" data-adsense-unit>
+        <span class="ad-slot__label">Anuncio</span>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client={client}
+          data-ad-slot={slotId}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
+    )}
+  </aside>
+)}

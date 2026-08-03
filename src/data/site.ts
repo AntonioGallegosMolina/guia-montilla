@@ -27,3 +27,20 @@ export const SEO = {
     "La guía de Montilla (Córdoba): bodegas Montilla-Moriles, restaurantes, monumentos, comercios, senderismo y noticias. Fotos, horarios y cómo llegar.",
   ogImage: "/images/og-default.jpg",
 };
+
+/** Monetización: patrocinios locales + AdSense (solo tras consentimiento). */
+export const ADS = {
+  enabled: true,
+  adsenseClient:
+    (import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined) ??
+    "ca-pub-6122031427972119",
+  /** IDs de unidades display (AdSense → Anuncios → Por unidad). Vacío = no renderiza unidad manual. */
+  slots: {
+    blogAside: (import.meta.env.PUBLIC_ADSENSE_SLOT_BLOG_ASIDE as string | undefined) ?? "",
+    inContent: (import.meta.env.PUBLIC_ADSENSE_SLOT_IN_CONTENT as string | undefined) ?? "",
+    categoryMid: (import.meta.env.PUBLIC_ADSENSE_SLOT_CATEGORY_MID as string | undefined) ?? "",
+    homeBelowFold: (import.meta.env.PUBLIC_ADSENSE_SLOT_HOME as string | undefined) ?? "",
+  },
+};
+
+export type AdPlacement = keyof typeof ADS.slots;

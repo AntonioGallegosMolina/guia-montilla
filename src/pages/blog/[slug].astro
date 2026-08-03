@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import { getCollection, render } from "astro:content";
 import businesses from "../../../data/businesses.json";
 import {
@@ -78,9 +79,11 @@ const schemas = buildArticleSchemas({
     <div class="wrap blog-article__layout">
       <div class="blog-prose">
         <Content />
+        <AdSlot placement="inContent" format="horizontal" />
       </div>
 
       <aside class="blog-aside">
+        <AdSlot placement="blogAside" format="aside" />
         {related.length > 0 && (
           <section class="blog-aside__block">
             <h2>Lugares citados</h2>

@@ -10,7 +10,8 @@ Directorio local automatizado de Montilla-Moriles.
 - **Ficha de negocio** con Schema.org, contacto y formulario de leads
 - **Rutas de enoturismo** predefinidas
 - **Eventos** actualizados automáticamente desde Montilla Digital
-- **Página para negocios** con planes de monetización (29€/79€)
+- **Página para negocios** con planes de monetización (29€ / 69€ / 79€)
+- **AdSense + patrocinios locales** (anuncios con consentimiento RGPD)
 - **Pipeline diario** vía GitHub Actions + hosting gratis en Pages
 
 ## Local
@@ -34,7 +35,10 @@ Abre http://localhost:4321
 
 Los negocios locales pagan por:
 - **Destacado** (29€/mes) — posición prioritaria
+- **Banner** (69€/mes) — anuncio en blog/categorías (sustituye AdSense en ese hueco)
 - **Patrocinio** (79€/mes) — portada y rutas
+
+Además: **Google AdSense** rellena los huecos sin patrocinio local (tras consentimiento de cookies).
 
 Contacto en `/para-negocios/`
 

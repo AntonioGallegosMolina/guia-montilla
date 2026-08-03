@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import IndexRow from "../../components/IndexRow.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import categories from "../../../data/categories.json";
 import businesses from "../../../data/businesses.json";
 import routes from "../../../data/routes.json";
@@ -30,6 +31,9 @@ const bannerRel = photoForCategory(category.id).replace(/^\//, "");
 const banner = `${base}${bannerRel}`;
 const hike = routes.filter((r) => r.type === "senderismo");
 const themed = routes.filter((r) => r.type !== "senderismo");
+const mid = Math.ceil(items.length / 2);
+const itemsTop = items.slice(0, mid);
+const itemsBottom = items.slice(mid);
 ---
 
 <Layout
@@ -105,9 +109,17 @@ const themed = routes.filter((r) => r.type !== "senderismo");
             <h2>{items.length} fichas en {category.name}</h2>
           </div>
           {items.length > 0 ? (
-            <ul class="index-list">
-              {items.map((b) => <IndexRow business={b} />)}
-            </ul>
+            <>
+              <ul class="index-list">
+                {itemsTop.map((b) => <IndexRow business={b} />)}
+              </ul>
+              <AdSlot placement="categoryMid" format="horizontal" />
+              {itemsBottom.length > 0 && (
+                <ul class="index-list">
+                  {itemsBottom.map((b) => <IndexRow business={b} />)}
+                </ul>
+              )}
+            </>
           ) : (
             <p class="empty-note">Sin fichas en esta categoría.</p>
           )}

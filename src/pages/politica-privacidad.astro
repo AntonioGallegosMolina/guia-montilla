@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { LEGAL, SITE } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
-const updated = "6 de julio de 2026";
+const updated = "3 de agosto de 2026";
 ---
 
 <Layout
@@ -36,9 +36,11 @@ const updated = "6 de julio de 2026";
         <li><strong>Datos de navegación:</strong> dirección IP, tipo de dispositivo, navegador y páginas visitadas (logs técnicos del servidor).</li>
         <li><strong>Datos de formularios:</strong> nombre, correo, teléfono y mensaje si nos contactas o solicitas información comercial.</li>
         <li><strong>Preferencia de cookies:</strong> si has aceptado o rechazado cookies no esenciales (almacenada en tu navegador).</li>
+        <li><strong>Datos de publicidad (si aceptas cookies):</strong> identificadores y señales que Google AdSense usa para mostrar anuncios (pueden incluir identificadores de dispositivo o cookies de publicidad).</li>
       </ul>
       <p>
-        No solicitamos datos especialmente protegidos. No vendemos ni cedemos tus datos a terceros con fines comerciales.
+        No solicitamos datos especialmente protegidos. No vendemos tus datos. Los anuncios de Google pueden implicar
+        tratamiento por Google Ireland Ltd. según su política de privacidad.
       </p>
 
       <h2>3. Finalidad y legitimación</h2>
@@ -47,6 +49,7 @@ const updated = "6 de julio de 2026";
         <li><strong>Responder consultas</strong> — consentimiento del interesado o interés legítimo.</li>
         <li><strong>Seguridad y mantenimiento</strong> — interés legítimo del responsable.</li>
         <li><strong>Cumplimiento legal</strong> — obligación legal aplicable.</li>
+        <li><strong>Publicidad personalizada o contextual (AdSense)</strong> — solo con tu consentimiento explícito vía el banner de cookies.</li>
       </ul>
 
       <h2>4. Conservación</h2>
@@ -61,6 +64,7 @@ const updated = "6 de julio de 2026";
         <li><strong>Hosting (IONOS):</strong> alojamiento web en la Unión Europea.</li>
         <li><strong>Web3Forms:</strong> si utilizas un formulario de contacto, el mensaje se envía a través de su servicio para entregarte el correo.</li>
         <li><strong>Google Fonts:</strong> carga tipográfica desde servidores de Google (ver política de cookies).</li>
+        <li><strong>Google AdSense:</strong> si aceptas cookies de publicidad, Google muestra anuncios y puede tratar datos según <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">su política</a>. Puedes gestionar preferencias en <a href="https://adssettings.google.com" rel="noopener noreferrer" target="_blank">adssettings.google.com</a>.</li>
       </ul>
 
       <h2>6. Derechos</h2>

@@ -157,12 +157,31 @@ Si quieres `guiamontilla.es` en vez de github.io:
 
 ## 💰 Cómo ganar dinero
 
+### A) Negocios locales (lo que más factura)
+
 1. **Destacados (29€/mes):** Llama/WhatsApp a 10 negocios de la web:
    > *«Hola, sois en Guía Montilla. Aparecéis gratis. Si queréis salir primero cuando busquen [vuestra categoría] en Montilla, son 29€/mes.»*
 
-2. Empieza por: Don Gonzalo, Bolero, Hostal Bellido, Alvear, fontanería…
+2. **Banner (69€/mes):** anuncio en blog y categorías. Cuando paguen, edita `data/ads.json`:
+   - `"active": true`
+   - `placement`: `blogAside` | `inContent` | `categoryMid` | `homeBelowFold`
+   - título, subtítulo, `href`, `image` opcional
 
-3. Cuando paguen, edita `data/businesses.json` → `"featured": true`
+3. **Patrocinio (79€/mes):** portada — `"featured": true` en `data/businesses.json`
+
+Empieza por: Don Gonzalo, Bolero, Hostal Bellido, Alvear, fontanería…
+
+### B) Google AdSense (pasivo)
+
+1. En [AdSense](https://www.google.com/adsense/) confirma el sitio `guiamontilla.es`
+2. Activa **Anuncios automáticos** (el script `ca-pub-6122031427972119` ya está en la web, solo tras aceptar cookies)
+3. Opcional — crea unidades display y pega los IDs en `.env` o `src/data/site.ts` (`ADS.slots`):
+   - `PUBLIC_ADSENSE_SLOT_BLOG_ASIDE`
+   - `PUBLIC_ADSENSE_SLOT_IN_CONTENT`
+   - `PUBLIC_ADSENSE_SLOT_CATEGORY_MID`
+   - `PUBLIC_ADSENSE_SLOT_HOME`
+
+Si hay patrocinio local activo en un hueco, **ese** sustituye a AdSense ahí.
 
 ---
 
@@ -172,6 +191,7 @@ Si quieres `guiamontilla.es` en vez de github.io:
 guia-montilla/
 ├── data/
 │   businesses.json    ← 51 negocios (edita aquí para añadir más)
+│   ads.json           ← Patrocinios locales (banners)
 │   events.json        ← Auto-actualizado por pipeline
 │   categories.json
 ├── public/images/     ← FOTOS (cambia por fotos reales de Montilla)

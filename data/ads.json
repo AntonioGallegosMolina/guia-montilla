@@ -1,0 +1,12 @@
+[
+  {
+    "id": "ejemplo-verano",
+    "placement": "blogAside",
+    "active": false,
+    "title": "Nombre del negocio",
+    "subtitle": "Texto corto del patrocinio",
+    "href": "/para-negocios/",
+    "image": "",
+    "sponsorLabel": "Patrocinado"
+  }
+]

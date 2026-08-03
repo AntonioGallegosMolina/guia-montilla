@@ -10,8 +10,8 @@ const storageKey = "guia-montilla-cookie-consent";
     <div class="cookie-banner__text">
       <p id="cookie-banner-title" class="cookie-banner__title">Cookies en Guía Montilla</p>
       <p>
-        Usamos cookies técnicas para recordar tu elección y servicios de terceros (tipografías, mapas, formularios).
-        No usamos cookies de publicidad. Más info en nuestra{" "}
+        Usamos cookies técnicas para recordar tu elección. Si aceptas, también cookies de publicidad
+        (Google AdSense) para mostrar anuncios. Puedes rechazarlas y seguir navegando. Más info en nuestra{" "}
         <a href={`${base}politica-cookies/`}>política de cookies</a>.
       </p>
     </div>
@@ -32,12 +32,25 @@ const storageKey = "guia-montilla-cookie-consent";
       localStorage.setItem(storageKey, value);
     } catch { /* */ }
     banner?.setAttribute("hidden", "");
+    if (value === "accepted") {
+      window.__gmConsent = "ads";
+      window.dispatchEvent(new CustomEvent("gm:consent-accepted"));
+      if (typeof window.__gmLoadAds === "function") {
+        window.__gmLoadAds();
+      }
+    } else {
+      window.__gmConsent = "essential";
+    }
   }
 
   function init() {
     try {
-      if (localStorage.getItem(storageKey)) {
+      const choice = localStorage.getItem(storageKey);
+      if (choice) {
         banner?.setAttribute("hidden", "");
+        if (choice === "accepted") {
+          window.__gmConsent = "ads";
+        }
         return;
       }
     } catch { /* */ }

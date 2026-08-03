@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { LEGAL } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
-const updated = "6 de julio de 2026";
+const updated = "3 de agosto de 2026";
 ---
 
 <Layout
@@ -40,12 +40,38 @@ const updated = "6 de julio de 2026";
           <tr>
             <td><code>guia-montilla-cookie-consent</code></td>
             <td>Guarda si has aceptado o rechazado cookies no esenciales</td>
-            <td>12 meses</td>
+            <td>12 meses (localStorage)</td>
           </tr>
         </tbody>
       </table>
 
-      <h3>Cookies de terceros</h3>
+      <h3>Cookies de publicidad (opcionales)</h3>
+      <p>
+        Solo se activan si pulsas <strong>Aceptar</strong> en el banner de cookies. Base legal: consentimiento (art. 6.1.a RGPD).
+        Sirven para mostrar anuncios de Google AdSense y medir su rendimiento.
+      </p>
+      <table class="legal-table">
+        <thead>
+          <tr><th>Nombre / proveedor</th><th>Finalidad</th><th>Más información</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google AdSense (<code>IDE</code>, <code>NID</code>, otras de DoubleClick)</td>
+            <td>Mostrar anuncios personalizados o contextuales y limitar frecuencia</td>
+            <td>
+              <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">Google Ads</a>
+              ·{" "}
+              <a href="https://adssettings.google.com" rel="noopener noreferrer" target="_blank">Configurar anuncios</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Puedes rechazar estas cookies con «Solo necesarias» y seguir usando la guía. Los patrocinios locales (banners
+        vendidos a negocios de Montilla) no dependen de cookies de Google.
+      </p>
+
+      <h3>Otros terceros</h3>
       <p>Algunos servicios externos pueden instalar cookies cuando interactúas con ellos:</p>
       <table class="legal-table">
         <thead>
@@ -69,9 +95,6 @@ const updated = "6 de julio de 2026";
           </tr>
         </tbody>
       </table>
-      <p>
-        Actualmente <strong>no utilizamos cookies de analítica ni publicidad</strong> propias (Google Analytics, Meta Pixel, etc.).
-      </p>
 
       <h2>3. Cómo gestionar las cookies</h2>
       <p>

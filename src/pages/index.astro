@@ -4,6 +4,7 @@ import SearchBox from "../components/SearchBox.astro";
 import CategoryGrid from "../components/CategoryGrid.astro";
 import FeatureLead from "../components/FeatureLead.astro";
 import IndexRow from "../components/IndexRow.astro";
+import AdSlot from "../components/AdSlot.astro";
 import businesses from "../../data/businesses.json";
 import categories from "../../data/categories.json";
 import routes from "../../data/routes.json";
@@ -111,6 +112,10 @@ const latestPosts = (await getCollection("blog"))
 
   <div class="wrap">
     <CategoryGrid sections={homeSections} />
+  </div>
+
+  <div class="wrap">
+    <AdSlot placement="homeBelowFold" format="horizontal" />
   </div>
 
   <section class="block">

@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PhotoGallery from "../../components/PhotoGallery.astro";
 import RelatedPlaces from "../../components/RelatedPlaces.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import businesses from "../../../data/businesses.json";
 import categories from "../../../data/categories.json";
 import { SITE } from "../../data/site";
@@ -150,6 +151,8 @@ const schemas = buildBusinessSchemas({
             <p>{business.tips}</p>
           </section>
         )}
+
+        <AdSlot placement="inContent" format="horizontal" />
 
         <RelatedPlaces current={business} all={businesses} />
       </div>

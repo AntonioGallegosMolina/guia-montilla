@@ -1,0 +1,65 @@
+---
+import { ADS } from "../data/site";
+
+const client = ADS.adsenseClient;
+const enabled = ADS.enabled && Boolean(client);
+const storageKey = "guia-montilla-cookie-consent";
+---
+
+{enabled && (
+  <script define:vars={{ client, storageKey }}>
+    (function () {
+      const SCRIPT_ID = "gm-adsense-loader";
+
+      function pushPendingUnits() {
+        document.querySelectorAll("[data-adsense-unit]").forEach(function (wrap) {
+          const ins = wrap.querySelector("ins.adsbygoogle");
+          if (!ins || ins.getAttribute("data-adsbygoogle-status")) return;
+          try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          } catch {
+            /* bloqueado o aún no listo */
+          }
+        });
+      }
+
+      function loadAdSense() {
+        window.__gmConsent = "ads";
+        if (document.getElementById(SCRIPT_ID)) {
+          pushPendingUnits();
+          window.dispatchEvent(new CustomEvent("gm:ads-ready"));
+          return;
+        }
+        const s = document.createElement("script");
+        s.id = SCRIPT_ID;
+        s.async = true;
+        s.crossOrigin = "anonymous";
+        s.src =
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+          encodeURIComponent(client);
+        s.onload = function () {
+          pushPendingUnits();
+          window.dispatchEvent(new CustomEvent("gm:ads-ready"));
+        };
+        document.head.appendChild(s);
+      }
+
+      function hasAdsConsent() {
+        try {
+          return localStorage.getItem(storageKey) === "accepted";
+        } catch {
+          return false;
+        }
+      }
+
+      window.__gmLoadAds = loadAdSense;
+
+      if (hasAdsConsent()) {
+        loadAdSense();
+      }
+
+      window.addEventListener("gm:consent-accepted", loadAdSense);
+      window.addEventListener("gm:ads-ready", pushPendingUnits);
+    })();
+  </script>
+)}
