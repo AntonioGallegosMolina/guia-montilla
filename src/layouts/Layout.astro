@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import AdSenseLoader from "../components/AdSenseLoader.astro";
-import { SEO } from "../data/site";
+import { ADS, SEO } from "../data/site";
 
 interface Props {
   title?: string;
@@ -102,6 +102,14 @@ const schemas = jsonLd
     <meta name="twitter:image:alt" content={title} />
 
     <title>{fullTitle}</title>
+
+    {ADS.enabled && ADS.adsenseClient && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.adsenseClient}`}
+        crossorigin="anonymous"
+      />
+    )}
 
     {schemas.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />

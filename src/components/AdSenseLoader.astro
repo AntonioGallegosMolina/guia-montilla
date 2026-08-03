@@ -1,16 +1,17 @@
 ---
 import { ADS } from "../data/site";
 
-const client = ADS.adsenseClient;
-const enabled = ADS.enabled && Boolean(client);
+const enabled = ADS.enabled && Boolean(ADS.adsenseClient);
 const storageKey = "guia-montilla-cookie-consent";
 ---
 
+{/**
+ * El script de AdSense va en <head> (Layout) para verificación de propiedad.
+ * Aquí solo se activan las unidades display tras consentimiento RGPD.
+ */}
 {enabled && (
-  <script define:vars={{ client, storageKey }}>
+  <script define:vars={{ storageKey }}>
     (function () {
-      const SCRIPT_ID = "gm-adsense-loader";
-
       function pushPendingUnits() {
         document.querySelectorAll("[data-adsense-unit]").forEach(function (wrap) {
           const ins = wrap.querySelector("ins.adsbygoogle");
@@ -23,25 +24,10 @@ const storageKey = "guia-montilla-cookie-consent";
         });
       }
 
-      function loadAdSense() {
+      function activateAds() {
         window.__gmConsent = "ads";
-        if (document.getElementById(SCRIPT_ID)) {
-          pushPendingUnits();
-          window.dispatchEvent(new CustomEvent("gm:ads-ready"));
-          return;
-        }
-        const s = document.createElement("script");
-        s.id = SCRIPT_ID;
-        s.async = true;
-        s.crossOrigin = "anonymous";
-        s.src =
-          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
-          encodeURIComponent(client);
-        s.onload = function () {
-          pushPendingUnits();
-          window.dispatchEvent(new CustomEvent("gm:ads-ready"));
-        };
-        document.head.appendChild(s);
+        pushPendingUnits();
+        window.dispatchEvent(new CustomEvent("gm:ads-ready"));
       }
 
       function hasAdsConsent() {
@@ -52,13 +38,13 @@ const storageKey = "guia-montilla-cookie-consent";
         }
       }
 
-      window.__gmLoadAds = loadAdSense;
+      window.__gmLoadAds = activateAds;
 
       if (hasAdsConsent()) {
-        loadAdSense();
+        activateAds();
       }
 
-      window.addEventListener("gm:consent-accepted", loadAdSense);
+      window.addEventListener("gm:consent-accepted", activateAds);
       window.addEventListener("gm:ads-ready", pushPendingUnits);
     })();
   </script>
