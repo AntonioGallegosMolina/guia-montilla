@@ -10109,7 +10109,7 @@
       "category": "restaurantes",
       "categoryLabel": "Restaurantes",
       "categoryUrl": "/restaurantes/",
-      "featured": true,
+      "featured": false,
       "keywords": [
         "moncafe",
         "restaurantes",
@@ -10139,11 +10139,10 @@
         "guisos",
         "caseros",
         "terraza",
-        "destacado",
         "café",
         "copas"
       ],
-      "searchBlob": "moncafe restaurantes en moncafe se come con el ritmo del pueblo: tapas, platos de temporada y ambiente de barrio. restaurante moncafe restaurantes come con ritmo del pueblo: tapas platos temporada ambiente barrio pol ind llanos jarata madame curie 101 montilla restaurante bar desayunos menu dia guisos caseros terraza destacado cafe copas"
+      "searchBlob": "moncafe restaurantes en moncafe se come con el ritmo del pueblo: tapas, platos de temporada y ambiente de barrio. restaurante moncafe restaurantes come con ritmo del pueblo: tapas platos temporada ambiente barrio pol ind llanos jarata madame curie 101 montilla restaurante bar desayunos menu dia guisos caseros terraza cafe copas"
     },
     {
       "slug": "monti-reclam",
