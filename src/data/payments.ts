@@ -5,7 +5,8 @@
 export const PAYMENTS = {
   /** Plan Destacado 29 €/mes (suscripción o pago único según configures el enlace) */
   stripeDestacado:
-    (import.meta.env.PUBLIC_STRIPE_PAYMENT_LINK_DESTACADO as string | undefined)?.trim() ?? "",
+    (import.meta.env.PUBLIC_STRIPE_PAYMENT_LINK_DESTACADO as string | undefined)?.trim() ??
+    "https://buy.stripe.com/9B68wP56w6xPgv0cqT4AU0o",
   stripeBanner:
     (import.meta.env.PUBLIC_STRIPE_PAYMENT_LINK_BANNER as string | undefined)?.trim() ?? "",
   stripePatrocinio:
