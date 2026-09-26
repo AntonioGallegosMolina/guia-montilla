@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PhotoGallery from "../../components/PhotoGallery.astro";
 import RelatedPlaces from "../../components/RelatedPlaces.astro";
+import BusinessOwnerCta from "../../components/BusinessOwnerCta.astro";
 import AdSlot from "../../components/AdSlot.astro";
 import businesses from "../../../data/businesses.json";
 import categories from "../../../data/categories.json";
@@ -153,6 +154,8 @@ const schemas = buildBusinessSchemas({
         )}
 
         <AdSlot placement="inContent" format="horizontal" />
+
+        <BusinessOwnerCta businessName={business.name} featured={business.featured} />
 
         <RelatedPlaces current={business} all={businesses} />
       </div>

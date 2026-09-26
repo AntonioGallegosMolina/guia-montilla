@@ -98,27 +98,40 @@ export function buildOutreachMessage(opts: {
   searchTerm: string;
   listingUrl: string;
   siteUrl: string;
+  categoryLabel: string;
+  rankInCategory: number;
+  totalInCategory: number;
   contactName?: string;
 }): string {
-  const { businessName, searchTerm, listingUrl, siteUrl, contactName = "Antonio" } = opts;
+  const {
+    businessName,
+    searchTerm,
+    listingUrl,
+    siteUrl,
+    categoryLabel,
+    rankInCategory,
+    totalInCategory,
+    contactName = "Antonio",
+  } = opts;
   const host = siteUrl.replace(/\/$/, "").replace(/^https?:\/\//, "");
+  const payUrl = `${siteUrl.replace(/\/$/, "")}/para-negocios/`;
 
   return `Hola, buenos días. Soy ${contactName} de Guía Montilla.
 
-Tenemos ya a *${businessName}* en ${host} — el directorio local con unas *${DAILY_VISITS.toLocaleString("es-ES")} visitas al día*.
+Tenemos ya a *${businessName}* en ${host} — guía local con tráfico de búsquedas tipo «${searchTerm}».
 
-Podéis pasar a *Destacado* por *${OUTREACH_PRICE} €/mes* (sin permanencia):
-• Salís primero al buscar «${searchTerm}»
-• Etiqueta Destacado y ficha más visible
-• Más fotos en vuestra página
+Ahora en *${categoryLabel}* hay *${totalInCategory} fichas*; la vuestra sale en la posición *${rankInCategory}* (orden alfabético). Con *Destacado* (${OUTREACH_PRICE} €/mes, sin permanencia) pasáis arriba del todo:
+• Primero al buscar «${searchTerm}»
+• Etiqueta Destacado en la ficha
+• Más visibilidad en home y rutas
 
 Vuestra ficha:
 ${listingUrl}
 
-Plan Destacado:
-${siteUrl.replace(/\/$/, "")}/para-negocios/
+Planes y pago online:
+${payUrl}
 
-Si os encaja, lo activamos en 24 h. ¿Os interesa?`;
+¿Os encaja? Lo activamos en 24 h laborables.`;
 }
 
 /** Enlace WhatsApp fiable (api.whatsapp.com + phone sin +) */
@@ -137,12 +150,29 @@ export function buildOutreachLeads(
   const base = siteUrl.replace(/\/$/, "");
   const priorityIndex = Object.fromEntries(CATEGORY_PRIORITY.map((id, i) => [id, i]));
 
+  const byCategory = new Map<string, BusinessRow[]>();
+  for (const b of businesses) {
+    const list = byCategory.get(b.category) ?? [];
+    list.push(b);
+    byCategory.set(b.category, list);
+  }
+  for (const list of byCategory.values()) {
+    list.sort(
+      (a, b) =>
+        Number(b.featured) - Number(a.featured) ||
+        a.name.localeCompare(b.name, "es"),
+    );
+  }
+
   return businesses
     .filter((b) => b.phone && !b.featured)
     .map((b) => {
       const e164 = normalizePhoneE164(b.phone);
       const categoryLabel = catMap[b.category] ?? b.category;
       const searchTerm = buildSearchTerm(b.category, categoryLabel);
+      const catList = byCategory.get(b.category) ?? [];
+      const rankInCategory = Math.max(1, catList.findIndex((x) => x.id === b.id) + 1);
+      const totalInCategory = catList.length;
       // Fichas viven en /negocio/{slug}/ — no en /{categoria}/{slug}/
       const listingUrl = `${base}/negocio/${b.slug}/`;
       const message = buildOutreachMessage({
@@ -150,6 +180,9 @@ export function buildOutreachLeads(
         searchTerm,
         listingUrl,
         siteUrl: base,
+        categoryLabel,
+        rankInCategory,
+        totalInCategory,
       });
 
       return {

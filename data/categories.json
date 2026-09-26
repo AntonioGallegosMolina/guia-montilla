@@ -5,6 +5,7 @@
     "name": "Bodegas",
     "headline": "Montilla-Moriles en copa",
     "description": "Bodegas, lagares, cooperativas y vinotecas con visitas y catas.",
+    "intro": "Aquí nace el fino bajo velo de flor y el amontillado que define la D.O. Montilla-Moriles. Soleras centenarias, lagares familiares y bodegas ecológicas abren sus puertas al enoturismo: reserva catas, recorre tinajas de roble y termina con una copa en el patio.",
     "seoTitle": "Bodegas en Montilla — Directorio Moriles",
     "seoDescription": "Todas las bodegas de Montilla. Horarios, visitas y enoturismo Montilla-Moriles."
   },
@@ -14,6 +15,7 @@
     "name": "Restaurantes",
     "headline": "Mesa montillana",
     "description": "Restaurantes, tabernas, asadores y cocina de autor.",
+    "intro": "Salmorejo, alcachofas de la tierra, carne a la brasa y maridajes con fino en copa. Desde tabernas de toda la vida hasta mesas de autor: el directorio reúne dónde comer bien en Montilla con horario, teléfono y cómo llegar.",
     "seoTitle": "Restaurantes en Montilla — Directorio completo",
     "seoDescription": "Restaurantes y tabernas de Montilla. Horarios, teléfono y ubicación."
   },
@@ -23,6 +25,7 @@
     "name": "Bares y cafés",
     "headline": "Tapeo y terraza",
     "description": "Bares, cafeterías, heladerías y churrerías.",
+    "intro": "El paseo de copas empieza en la barra y sigue en la terraza cuando el sol afloja. Bares de fino, cafés de desayuno, heladerías de tarde y churrerías de domingo: el mapa del tapeo cotidiano en el casco y el ensanche.",
     "seoTitle": "Bares y cafés en Montilla",
     "seoDescription": "Bares, cafés y heladerías de Montilla."
   },
@@ -32,6 +35,7 @@
     "name": "Alimentación",
     "headline": "Compra local",
     "description": "Supermercados, panaderías, obradores, fruterías y ultramarinos.",
+    "intro": "Pan de horno, aceite de oliva de la comarca, vino de bodega de confianza y fruta de temporada. Supermercados, ultramarinos y obradores donde el vecino compra de verdad — con horario partido y trato de barrio.",
     "seoTitle": "Alimentación en Montilla — Tiendas de comida",
     "seoDescription": "Supermercados y tiendas de alimentación en Montilla."
   },
@@ -41,6 +45,7 @@
     "name": "Alojamiento",
     "headline": "Pernoctar en Montilla",
     "description": "Hoteles, hostales, casas rurales y apartamentos.",
+    "intro": "Un fin de semana enoturístico, una noche de feria o una escapada en pareja: hoteles del centro, hostales económicos y casas rurales en el término. Compara ubicación, contacto y servicios antes de reservar.",
     "seoTitle": "Alojamiento en Montilla — Hoteles y hostales",
     "seoDescription": "Dónde dormir en Montilla."
   },
@@ -50,6 +55,7 @@
     "name": "Monumentos",
     "headline": "Historia en piedra",
     "description": "Castillo, iglesias, conventos, arcos, palacios y patrimonio.",
+    "intro": "Castillo de los Duques, arcos empedrados, palacios señoriales y el legado del Gran Capitán. Montilla guarda capas de historia visigoda, mudéjar y barroca: esta sección orienta qué ver, dónde está y cómo encajarlo en una ruta a pie.",
     "seoTitle": "Monumentos de Montilla — Patrimonio",
     "seoDescription": "Monumentos e iglesias de Montilla."
   },
@@ -59,6 +65,7 @@
     "name": "Museos",
     "headline": "Memoria y cultura",
     "description": "Museos, exposiciones permanentes y centros de interpretación.",
+    "intro": "Más allá del vino, Montilla cuenta su memoria en salas pequeñas y exposiciones que merecen una parada tranquila. Museos municipales, colecciones locales y centros de interpretación con horarios y datos para planificar la visita.",
     "seoTitle": "Museos en Montilla",
     "seoDescription": "Museos y exposiciones en Montilla."
   },
@@ -68,6 +75,7 @@
     "name": "Parques y naturaleza",
     "headline": "Aire libre",
     "description": "Parques, paseos, dehesas y espacios verdes.",
+    "intro": "Parques urbanos para ir con niños, paseos arbolados al atardecer y rincones de dehesa en el término. Cuando hace falta respirar sin salir del pueblo, aquí están los espacios verdes con nombre y ubicación.",
     "seoTitle": "Parques en Montilla — Naturaleza y paseos",
     "seoDescription": "Parques y naturaleza en Montilla."
   },
@@ -77,6 +85,7 @@
     "name": "Cultura y ocio",
     "headline": "Planes en el pueblo",
     "description": "Teatro, mercados, feria, deporte, turismo e instituciones.",
+    "intro": "Teatro Garnelo, mercados semanales, instalaciones deportivas y la Oficina de Turismo como punto de partida. Cultura de proximidad y ocio de pueblo: qué hay, dónde queda y a quién llamar.",
     "seoTitle": "Cultura y ocio en Montilla",
     "seoDescription": "Qué hacer en Montilla: cultura, mercados, deporte y turismo."
   },
@@ -86,6 +95,7 @@
     "name": "Rutas",
     "headline": "Recorre Montilla",
     "description": "Rutas enoturísticas, patrimoniales y de naturaleza.",
+    "intro": "Itinerarios listos para seguir: mañanas de fino entre bodegas, patrimonio en el casco, senderismo por fuentes señalizadas y tracks enlazados a Wikiloc. Elige duración, dificultad y paradas sin improvisar.",
     "seoTitle": "Rutas en Montilla — Enoturismo y patrimonio",
     "seoDescription": "Rutas por Montilla: vino, patrimonio y naturaleza."
   },
@@ -95,6 +105,7 @@
     "name": "Comercios",
     "headline": "Tiendas del pueblo",
     "description": "Moda, hogar, librerías, floristerías, papelería y comercio de barrio.",
+    "intro": "Moda, hogar, librería, floristería y el comercio de barrio que mantiene vivo el centro. Asociaciones de vecinos, tiendas de toda la vida y nuevos proyectos locales — con teléfono y dirección para apoyar lo de aquí.",
     "seoTitle": "Comercios en Montilla — Tiendas locales",
     "seoDescription": "Tiendas y comercios de Montilla."
   },
@@ -104,6 +115,7 @@
     "name": "Salud",
     "headline": "Bienestar y cuidado",
     "description": "Farmacias, clínicas, dentistas y veterinarios.",
+    "intro": "Farmacias de guardia, clínicas, dentistas y veterinarios de confianza en Montilla. Datos prácticos para el día a día: dónde está cada consulta, cómo llamar y horarios habituales.",
     "seoTitle": "Salud en Montilla — Farmacias y clínicas",
     "seoDescription": "Farmacias, clínicas y salud en Montilla."
   },
@@ -113,6 +125,7 @@
     "name": "Belleza",
     "headline": "Cuidado personal",
     "description": "Peluquerías, barberías, estética y spas.",
+    "intro": "Peluquería, barbería, estética y centros de bienestar donde el vecino reserva cita. Encuentra el salón o la clínica estética que buscas en el pueblo, con contacto directo.",
     "seoTitle": "Belleza en Montilla — Peluquerías y estética",
     "seoDescription": "Peluquerías, barberías y centros de belleza en Montilla."
   },
@@ -122,6 +135,7 @@
     "name": "Profesionales",
     "headline": "Gestión del día a día",
     "description": "Abogados, gestorías, inmobiliarias, bancos y seguros.",
+    "intro": "Gestoría, abogado, inmobiliaria, banco y seguros a un teléfono de distancia. Servicios profesionales que atienden a familias y pymes de la Campiña Sur desde Montilla.",
     "seoTitle": "Profesionales en Montilla — Asesoría y servicios",
     "seoDescription": "Abogados, gestorías, inmobiliarias y seguros en Montilla."
   },
@@ -131,6 +145,7 @@
     "name": "Motor",
     "headline": "Coche y taller",
     "description": "Gasolineras, talleres, concesionarios y grúas.",
+    "intro": "Gasolina, ITV, taller mecánico, neumáticos y grúa cuando hace falta. El directorio de motor de Montilla para residentes y visitantes que necesitan resolver el coche en la comarca.",
     "seoTitle": "Motor en Montilla — Talleres y gasolineras",
     "seoDescription": "Talleres, gasolineras y servicios de motor en Montilla."
   },
@@ -140,6 +155,7 @@
     "name": "Educación",
     "headline": "Formación",
     "description": "Colegios, institutos y centros educativos.",
+    "intro": "Colegios, institutos y centros de formación del municipio. Referencias locales para familias y estudiantes: ubicación y datos de contacto de la red educativa montillana.",
     "seoTitle": "Educación en Montilla — Colegios e institutos",
     "seoDescription": "Centros educativos de Montilla."
   }

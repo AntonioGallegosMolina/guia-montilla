@@ -40,7 +40,15 @@ const metaBits = [
 
   <section class="block">
     <div class="wrap prose-narrow">
-      <p class="page-body__prose">{route.description}</p>
+      <div class="route-prose">
+        <p class="route-prose__lead">{route.description}</p>
+        {route.idealFor && (
+          <p class="route-prose__for">
+            <span class="route-prose__for-label">Ideal para</span>
+            {route.idealFor}
+          </p>
+        )}
+      </div>
       {route.sourceNote && <p class="route-source">{route.sourceNote}</p>}
 
       <h2 class="section-title">{isHike ? "Puntos del recorrido" : "Paradas"}</h2>
@@ -88,6 +96,33 @@ const metaBits = [
   .route-badge--soft {
     background: var(--wine-light);
     color: var(--wine-deep);
+  }
+  .route-prose {
+    margin-bottom: 1.25rem;
+  }
+  .route-prose__lead {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 1rem;
+  }
+  .route-prose__for {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    background: var(--wine-light);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .route-prose__for-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 0.25rem;
   }
   .route-source {
     font-size: 0.9rem;

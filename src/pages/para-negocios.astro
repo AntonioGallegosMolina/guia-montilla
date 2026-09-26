@@ -1,70 +1,209 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { LEGAL, SITE } from "../data/site";
+import { PAYMENTS, hasStripeCheckout } from "../data/payments";
+import businesses from "../../data/businesses.json";
 
 const base = import.meta.env.BASE_URL;
+const totalListings = businesses.length;
+const featuredCount = businesses.filter((b) => b.featured).length;
+const phoneDigits = SITE.phone.replace(/\s/g, "");
+const waBase = `https://wa.me/34${phoneDigits}`;
+const waDestacado = `${waBase}?text=${encodeURIComponent("Hola, quiero el plan Destacado en Guía Montilla para mi negocio.")}`;
+const mailSubject = encodeURIComponent("Plan Destacado — Guía Montilla");
+const mailBody = encodeURIComponent(
+  "Nombre del negocio:\nDirección:\nEnlace Google Maps:\nPlan que me interesa (Destacado / Banner / Patrocinio):\n",
+);
+const mailHref = `mailto:${SITE.emailNegocios}?subject=${mailSubject}&body=${mailBody}`;
+const stripeDestacado = PAYMENTS.stripeDestacado;
+const stripeCheckout = hasStripeCheckout();
 ---
 
-<Layout title="Anuncia tu negocio en Montilla" description="Destaca tu bodega, restaurante o alojamiento en la guía local de Montilla.">
-  <section class="page-head">
+<Layout
+  title="Anuncia tu negocio en Montilla"
+  description="Destaca tu bodega, restaurante o comercio en la guía local de Montilla. Planes desde 29 €/mes con visibilidad en búsquedas locales."
+>
+  <section class="page-head page-head--biz">
     <div class="wrap">
       <a href={import.meta.env.BASE_URL} class="back">← Inicio</a>
-      <h1>Tu negocio, visible</h1>
-      <p class="page-head__sub">Cuando busquen «bodegas montilla» o «restaurantes montilla», que salgas tú.</p>
+      <p class="page-head__eyebrow">Para negocios de Montilla</p>
+      <h1>Que te encuentren antes que a tu competencia</h1>
+      <p class="page-head__sub page-head__sub--wide">
+        Guía Montilla concentra búsquedas de «bodegas Montilla», «restaurantes Montilla» y decenas de
+        categorías locales. Hoy hay <strong>{totalListings} fichas</strong> — si no destacas, compites
+        en igualdad con todas.
+      </p>
+      <div class="biz-hero__actions">
+        {stripeCheckout && (
+          <a
+            href={stripeDestacado}
+            class="btn btn--primary"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Pagar Destacado online (29 €)
+          </a>
+        )}
+        <a
+          href={waDestacado}
+          class:list={["btn", stripeCheckout ? "btn--ghost" : "btn--primary"]}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          WhatsApp
+        </a>
+        <a href={mailHref} class="btn btn--ghost">Email</a>
+      </div>
     </div>
   </section>
 
   <section class="block">
     <div class="wrap">
-      <div class="tiers">
+      <ul class="biz-proof" aria-label="Por qué la guía importa">
+        <li>
+          <span class="biz-proof__num">{totalListings}+</span>
+          <span class="biz-proof__label">negocios indexados en Montilla</span>
+        </li>
+        <li>
+          <span class="biz-proof__num">SEO</span>
+          <span class="biz-proof__label">fichas pensadas para Google local</span>
+        </li>
+        <li>
+          <span class="biz-proof__num">{featuredCount}</span>
+          <span class="biz-proof__label">negocios ya en plan destacado</span>
+        </li>
+      </ul>
+
+      <div class="block-head block-head--tight">
+        <h2>Planes claros, sin letra pequeña</h2>
+        <p class="block-head__deck">
+          El listado gratis es la puerta de entrada. Los planes de pago compran posición, etiqueta y
+          presencia donde el visitante decide — categoría, blog, portada y rutas.
+        </p>
+      </div>
+
+      <div class="tiers tiers--biz">
         <div class="tier">
           <h3>Gratis</h3>
+          <p class="tier-tagline">Presencia básica</p>
           <p class="tier-price">0 €<small>/mes</small></p>
           <ul>
-            <li>Ficha en el directorio</li>
-            <li>Datos de Google Maps</li>
-            <li>Enlace a tu web y teléfono</li>
+            <li>Ficha en el directorio con datos verificados</li>
+            <li>Teléfono, web y enlace a Google Maps</li>
+            <li>Horarios y fotos cuando están disponibles</li>
           </ul>
+          <p class="tier-note">Orden alfabético junto al resto de la categoría.</p>
         </div>
         <div class="tier tier--pick">
+          <p class="tier-badge">Más elegido</p>
           <h3>Destacado</h3>
+          <p class="tier-tagline">Primero en tu categoría</p>
           <p class="tier-price">29 €<small>/mes</small></p>
           <ul>
-            <li>Primero en tu categoría</li>
-            <li>Etiqueta destacado</li>
-            <li>Fotos de Google Maps</li>
+            <li>Apareces arriba del listado en tu categoría</li>
+            <li>Etiqueta «Destacado» visible en la ficha</li>
+            <li>Prioridad en la home y bloques relacionados</li>
+            <li>Galería de fotos reforzada cuando hay material</li>
           </ul>
+          {stripeCheckout ? (
+            <a href={stripeDestacado} class="tier-cta tier-cta--pay" rel="noopener noreferrer" target="_blank">
+              Pagar con tarjeta →
+            </a>
+          ) : (
+            <a href={waDestacado} class="tier-cta" rel="noopener noreferrer" target="_blank">
+              Quiero Destacado →
+            </a>
+          )}
         </div>
         <div class="tier">
           <h3>Banner</h3>
+          <p class="tier-tagline">Visibilidad en contenido</p>
           <p class="tier-price">69 €<small>/mes</small></p>
           <ul>
-            <li>Anuncio en blog y categorías</li>
-            <li>Sustituye a AdSense en ese hueco</li>
-            <li>Enlace a tu ficha o web</li>
+            <li>Banner patrocinado en blog y categorías</li>
+            <li>Sustituye el hueco de AdSense en esa zona</li>
+            <li>Enlace directo a tu ficha o web</li>
+            <li>Incluye todo lo del plan Destacado</li>
           </ul>
         </div>
         <div class="tier">
           <h3>Patrocinio</h3>
+          <p class="tier-tagline">Marca en la guía</p>
           <p class="tier-price">79 €<small>/mes</small></p>
           <ul>
-            <li>Portada y rutas</li>
-            <li>Alertas de eventos</li>
-            <li>Vendimia y campañas locales</li>
+            <li>Presencia en portada y rutas temáticas</li>
+            <li>Mención en alertas y campañas locales</li>
+            <li>Coordinación en vendimia y eventos</li>
+            <li>Incluye Destacado + Banner</li>
           </ul>
         </div>
       </div>
 
-      <div class="biz-form-block">
-        <h2>¿Quieres aparecer?</h2>
+      <div class="biz-compare">
+        <h2>Qué cambia cuando pagas</h2>
+        <div class="biz-compare__grid">
+          <div>
+            <h3>Solo gratis</h3>
+            <p>
+              El visitante entra en «Restaurantes», ve veinticuatro nombres y abre tres fichas al azar.
+              Si no estás arriba, dependes de la suerte o de que ya te conozcan.
+            </p>
+          </div>
+          <div class="biz-compare__highlight">
+            <h3>Con Destacado</h3>
+            <p>
+              Misma búsqueda, pero tu nombre es lo primero que lee. La etiqueta transmite que la guía
+              te recomienda — y eso inclina la llamada o la reserva.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-form-block biz-form-block--prominent">
+        <h2>Actívalo en un mensaje</h2>
         <p>
-          Escríbenos a <a href={`mailto:${SITE.email}`}>{SITE.email}</a> o llama al{" "}
-          <a href={`tel:+34${SITE.phone.replace(/\s/g, "")}`}>{SITE.phone}</a> con el nombre del negocio,
-          dirección y enlace de Google Maps. Solo incluimos locales reales verificados.
+          Escríbenos por <a href={waDestacado} rel="noopener noreferrer" target="_blank">WhatsApp</a>,
+          a <a href={mailHref}>{SITE.emailNegocios}</a> o llama al{" "}
+          <a href={`tel:+34${phoneDigits}`}>{SITE.phone}</a>. Necesitamos nombre del negocio, dirección
+          y enlace de Google Maps. Solo locales reales de Montilla; activamos el plan en 24–48 h laborables.
         </p>
         <p class="biz-form-block__dev">
-          Desarrollo: <a href={LEGAL.developerUrl} rel="noopener noreferrer" target="_blank">kyveradigital.es</a>
+          Operado por{" "}
+          <a href={LEGAL.developerUrl} rel="noopener noreferrer" target="_blank">Kyvera Digital</a>
+          — también montamos tu web si aún no tienes.
         </p>
+      </div>
+
+      <div class="biz-faq">
+        <h2>Preguntas habituales</h2>
+        <dl>
+          <div>
+            <dt>¿Hay permanencia?</dt>
+            <dd>No. Mensual, cancelas cuando quieras avisando con antelación.</dd>
+          </div>
+          <div>
+            <dt>¿Puedo probar antes de pagar?</dt>
+            <dd>
+              La ficha gratis ya te da presencia. El plan de pago es para negocios que quieren captar
+              clientes nuevos desde la guía, no solo estar listados.
+            </dd>
+          </div>
+          <div>
+            <dt>¿Cómo pago?</dt>
+            <dd>
+              {stripeCheckout
+                ? "Tarjeta con Stripe (enlace seguro arriba), o transferencia / Bizum si lo prefieres."
+                : "Transferencia o Bizum tras confirmar el plan por WhatsApp o email."}
+            </dd>
+          </div>
+          <div>
+            <dt>¿Y si ya tengo ficha?</dt>
+            <dd>
+              Perfecto: no duplicamos. Subimos tu plan y reordenamos la categoría el mismo día que
+              recibimos el pago.
+            </dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>

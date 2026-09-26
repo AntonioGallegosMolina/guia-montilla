@@ -32,6 +32,9 @@ const storageKey = "guia-montilla-cookie-consent";
       localStorage.setItem(storageKey, value);
     } catch { /* */ }
     banner?.setAttribute("hidden", "");
+    if (typeof window.__gmUpdateGoogleConsent === "function") {
+      window.__gmUpdateGoogleConsent(value === "accepted");
+    }
     if (value === "accepted") {
       window.__gmConsent = "ads";
       window.dispatchEvent(new CustomEvent("gm:consent-accepted"));
@@ -50,6 +53,11 @@ const storageKey = "guia-montilla-cookie-consent";
         banner?.setAttribute("hidden", "");
         if (choice === "accepted") {
           window.__gmConsent = "ads";
+          if (typeof window.__gmUpdateGoogleConsent === "function") {
+            window.__gmUpdateGoogleConsent(true);
+          }
+        } else if (typeof window.__gmUpdateGoogleConsent === "function") {
+          window.__gmUpdateGoogleConsent(false);
         }
         return;
       }

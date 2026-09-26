@@ -1,0 +1,37 @@
+---
+import { SITE } from "../data/site";
+
+interface Props {
+  businessName: string;
+  featured?: boolean;
+}
+
+const { businessName, featured = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const waText = encodeURIComponent(
+  `Hola, soy titular de «${businessName}» en Montilla. Me interesa destacar mi ficha en Guía Montilla.`,
+);
+const waHref = `https://wa.me/34${SITE.phone.replace(/\s/g, "")}?text=${waText}`;
+---
+
+{!featured && (
+<aside class="owner-cta" aria-labelledby="owner-cta-title">
+  <div class="owner-cta__inner">
+    <div class="owner-cta__copy">
+      <p class="owner-cta__eyebrow">¿Gestionas este negocio?</p>
+      <h2 id="owner-cta-title">Sal primero cuando te busquen</h2>
+      <p>
+        Tu ficha ya está en el directorio. Con el plan Destacado apareces arriba en tu categoría y
+        llevas la etiqueta visible para quien compara opciones.
+      </p>
+    </div>
+    <div class="owner-cta__actions">
+      <a href={`${base}para-negocios/`} class="btn btn--primary">Ver planes</a>
+      <a href={waHref} class="btn btn--ghost" rel="noopener noreferrer" target="_blank">
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</aside>
+)}

@@ -33,7 +33,7 @@ export const ADS = {
   enabled: true,
   adsenseClient:
     (import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined) ??
-    "ca-pub-6122031427972119",
+    "ca-pub-2670243335449541",
   /** IDs de unidades display (AdSense → Anuncios → Por unidad). Vacío = no renderiza unidad manual. */
   slots: {
     blogAside: (import.meta.env.PUBLIC_ADSENSE_SLOT_BLOG_ASIDE as string | undefined) ?? "",

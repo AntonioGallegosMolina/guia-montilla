@@ -51,7 +51,10 @@ const itemsBottom = items.slice(mid);
           <a href={base} class="back back--light">← Inicio</a>
         )}
         <h1>{category.headline}</h1>
-        <p>{category.description}</p>
+        <p class="cat-banner__intro">{(category as { intro?: string }).intro ?? category.description}</p>
+        {!isRutas && items.length > 0 && (
+          <p class="cat-banner__count">{items.length} {items.length === 1 ? "ficha" : "fichas"} en esta sección</p>
+        )}
       </div>
     </div>
   </div>

@@ -26,7 +26,8 @@
     "fix-categories": "node scripts/fix-categories.mjs",
     "refresh-details": "node scripts/refresh-details.mjs",
     "rebuild": "node scripts/rebuild-businesses.mjs",
-    "patch-names": "node scripts/patch-names.mjs"
+    "patch-names": "node scripts/patch-names.mjs",
+    "refresh-copy": "node scripts/refresh-descriptions.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

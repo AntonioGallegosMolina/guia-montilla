@@ -174,8 +174,9 @@ Empieza por: Don Gonzalo, Bolero, Hostal Bellido, Alvear, fontanería…
 ### B) Google AdSense (pasivo)
 
 1. En [AdSense](https://www.google.com/adsense/) confirma el sitio `guiamontilla.es`
-2. Activa **Anuncios automáticos** (el script `ca-pub-6122031427972119` ya está en la web, solo tras aceptar cookies)
-3. Opcional — crea unidades display y pega los IDs en `.env` o `src/data/site.ts` (`ADS.slots`):
+2. Verifica **ads.txt** en la raíz: `google.com, pub-2670243335449541, DIRECT, f08c47fec0942fa0` (archivo `public/ads.txt`)
+3. El script AdSense usa `ca-pub-2670243335449541` con **Consent Mode v2** (anuncios solo tras aceptar cookies)
+4. Activa **Anuncios automáticos** o crea unidades display y rellena los secrets en GitHub / `.env` (`ADS.slots`):
    - `PUBLIC_ADSENSE_SLOT_BLOG_ASIDE`
    - `PUBLIC_ADSENSE_SLOT_IN_CONTENT`
    - `PUBLIC_ADSENSE_SLOT_CATEGORY_MID`

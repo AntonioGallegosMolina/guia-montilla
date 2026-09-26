@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import AdSenseLoader from "../components/AdSenseLoader.astro";
+import GoogleConsent from "../components/GoogleConsent.astro";
 import { ADS, SEO } from "../data/site";
 
 interface Props {
@@ -103,12 +104,17 @@ const schemas = jsonLd
 
     <title>{fullTitle}</title>
 
+    <GoogleConsent />
+
     {ADS.enabled && ADS.adsenseClient && (
-      <script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.adsenseClient}`}
-        crossorigin="anonymous"
-      />
+      <>
+        <meta name="google-adsense-account" content={ADS.adsenseClient} />
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.adsenseClient}`}
+          crossorigin="anonymous"
+        />
+      </>
     )}
 
     {schemas.map((schema) => (
