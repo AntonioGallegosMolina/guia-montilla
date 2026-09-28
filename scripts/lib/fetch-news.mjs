@@ -1,5 +1,5 @@
 import Parser from "rss-parser";
-import { NEWS_RSS_SOURCES, OPINION_SKIP, MAX_NEWS, MAX_NEWS_AGE_DAYS } from "./config.mjs";
+import { NEWS_RSS_SOURCES, OPINION_SKIP, NEWS_SKIP, MAX_NEWS, MAX_NEWS_AGE_DAYS } from "./config.mjs";
 
 const parser = new Parser({ timeout: 20000 });
 
@@ -15,6 +15,15 @@ function stripHtml(html = "") {
 function isOpinion(item) {
   const haystack = [item.title ?? "", ...getCategoryStrings(item.categories)].join(" ");
   return OPINION_SKIP.some((p) => p.test(haystack));
+}
+
+function isRestrictedNews(item) {
+  const haystack = [
+    item.title ?? "",
+    item.link ?? "",
+    stripHtml(item.contentSnippet ?? item.description ?? ""),
+  ].join(" ");
+  return NEWS_SKIP.some((p) => p.test(haystack));
 }
 
 function isRecent(dateStr) {
@@ -69,6 +78,7 @@ export async function fetchNews() {
         if (!item.title || !item.link) continue;
         if (seenUrls.has(item.link)) continue;
         if (isOpinion(item)) continue;
+        if (isRestrictedNews(item)) continue;
         if (!isRecent(item.pubDate ?? item.isoDate)) continue;
 
         const excerpt = stripHtml(item.contentSnippet ?? item.description ?? "").slice(0, 320);

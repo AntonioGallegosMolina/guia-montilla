@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { LEGAL, SITE } from "../data/site";
+
+const base = import.meta.env.BASE_URL;
+const phoneHref = `tel:+34${SITE.phone.replace(/\s/g, "")}`;
+const siteOrigin = SITE.url.replace(/\/$/, "");
+---
+
+<Layout
+  title="Contacto"
+  description="Contacta con Guía Montilla: consultas editoriales, correcciones de fichas y propuestas de negocios locales."
+>
+  <section class="page-head">
+    <div class="wrap">
+      <a href={base} class="back">← Inicio</a>
+      <h1>Contacto</h1>
+      <p class="page-head__sub">
+        Dudas sobre la guía, correcciones en una ficha o información para negocios de Montilla.
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap contact-page">
+      <div class="contact-page__info legal-prose">
+        <h2>Datos de contacto</h2>
+        <p>
+          <strong>{LEGAL.owner}</strong><br />
+          Montilla (Córdoba), {LEGAL.country}
+        </p>
+        <ul class="contact-page__channels">
+          <li>
+            Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          </li>
+          <li>
+            Teléfono / WhatsApp: <a href={phoneHref}>{SITE.phone}</a>
+          </li>
+        </ul>
+        <p>
+          Para destacar tu negocio en el directorio, visita{" "}
+          <a href={`${base}para-negocios/`}>Anunciar tu negocio</a>. Para conocer el equipo y los criterios
+          editoriales, lee <a href={`${base}quienes-somos/`}>Quiénes somos</a>.
+        </p>
+        <p class="contact-page__privacy">
+          Al enviar el formulario tratamos tus datos según la{" "}
+          <a href={`${base}politica-privacidad/`}>política de privacidad</a>.
+        </p>
+      </div>
+
+      <div class="contact-page__form">
+        <h2>Escríbenos</h2>
+        <ContactForm
+          subject="Consulta desde la página de contacto — Guía Montilla"
+          redirectTo={`${siteOrigin}${base}contacto/?enviado=1`}
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-page {
+    display: grid;
+    gap: var(--space-6);
+    max-width: 52rem;
+  }
+  @media (min-width: 768px) {
+    .contact-page {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      max-width: none;
+    }
+  }
+  .contact-page__info h2,
+  .contact-page__form h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin: 0 0 var(--space-2);
+  }
+  .contact-page__channels {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-3);
+    line-height: 1.6;
+  }
+  .contact-page__privacy {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+</style>

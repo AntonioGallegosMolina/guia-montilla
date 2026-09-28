@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { LEGAL, SITE } from "../data/site";
+import businesses from "../../data/businesses.json";
+
+const base = import.meta.env.BASE_URL;
+const totalListings = businesses.length;
+const updated = "28 de septiembre de 2026";
+---
+
+<Layout
+  title="Quiénes somos"
+  description="Guía Montilla: directorio local editado y verificado sobre Montilla-Moriles. Misión, criterios de las fichas y contacto editorial."
+>
+  <section class="page-head">
+    <div class="wrap">
+      <a href={base} class="back">← Inicio</a>
+      <h1>Quiénes somos</h1>
+      <p class="page-head__sub">
+        La guía local de Montilla (Córdoba) para residentes, visitantes y negocios del municipio.
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap legal-prose">
+      <p class="legal-updated">Última actualización: {updated}</p>
+
+      <h2>Qué es Guía Montilla</h2>
+      <p>
+        <strong>{SITE.name}</strong> es un directorio y medio digital independiente centrado en Montilla y la comarca
+        del vino Montilla-Moriles. Reunimos fichas de bodegas, restaurantes, alojamiento, patrimonio, comercios y
+        servicios, además de rutas, artículos de blog y un resumen de noticias locales con enlace a la fuente original.
+      </p>
+      <p>
+        El objetivo es práctico: que encuentres horarios, ubicación y contexto antes de llamar o ir, y que los negocios
+        locales tengan una vitrina clara en búsquedas como «bodegas Montilla» o «restaurantes Montilla».
+      </p>
+
+      <h2>Quién lo mantiene</h2>
+      <p>
+        El titular del sitio es <strong>{LEGAL.owner}</strong>, con sede en Montilla (Córdoba). El diseño, la
+        arquitectura web y el mantenimiento técnico los realiza{" "}
+        <a href={`${base}negocio/kyvera-digital/`}>Kyvera Digital</a>, estudio de marketing y desarrollo web con sede
+        en la provincia. Kyvera no es el editor de cada ficha de terceros: actúa como partner tecnológico y de
+        visibilidad local.
+      </p>
+      <p>
+        Si necesitas hablar con el equipo editorial, usa la página de{" "}
+        <a href={`${base}contacto/`}>contacto</a> o escribe a{" "}
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+      </p>
+
+      <h2>Cómo trabajamos el contenido</h2>
+      <p>
+        Aunque parte de los datos públicos (dirección, teléfono, horarios) se apoya en fuentes abiertas como Google
+        Maps o webs oficiales, <strong>no publicamos un volcado automático sin revisión</strong>. Cada ficha pasa por
+        criterios de relevancia local, categorización y comprobaciones manuales antes de indexarse. Hoy hay más de{" "}
+        <strong>{totalListings} negocios</strong> en el directorio.
+      </p>
+      <ul>
+        <li>Incluimos establecimientos con actividad en Montilla o en el término municipal.</li>
+        <li>Priorizamos información útil: cómo llegar, qué ofrecen y enlaces a reserva o web cuando existen.</li>
+        <li>Corregimos errores cuando un negocio o un lector nos avisa; puedes reportarlos por contacto.</li>
+        <li>Los artículos del blog son guías editoriales propias sobre turismo, vino y patrimonio.</li>
+        <li>
+          En noticias solo enlazamos titulares de medios locales (Montilla Digital, Ayuntamiento, etc.) y{" "}
+          <strong>excluimos contenido ajeno al interés local</strong> (por ejemplo, artículos de apuestas o casinos
+          online insertados en feeds de terceros).
+        </li>
+      </ul>
+
+      <h2>Transparencia comercial</h2>
+      <p>
+        Algunos negocios pueden contratar planes de visibilidad en la guía (destacados, banners). Eso se indica en la
+        ficha cuando aplica. La publicidad display (Google AdSense) solo se carga si aceptas cookies de publicidad, con
+        Consent Mode conforme al RGPD.
+      </p>
+      <p>
+        ¿Tienes un comercio en Montilla? Consulta{" "}
+        <a href={`${base}para-negocios/`}>Anunciar tu negocio</a>.
+      </p>
+
+      <nav class="legal-nav" aria-label="Enlaces relacionados">
+        <a href={`${base}contacto/`}>Contacto</a>
+        <a href={`${base}aviso-legal/`}>Aviso legal</a>
+        <a href={`${base}politica-privacidad/`}>Privacidad</a>
+      </nav>
+    </div>
+  </section>
+</Layout>
