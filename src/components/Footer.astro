@@ -1,5 +1,5 @@
 ---
-import { SITE } from "../data/site";
+import { LEGAL, SITE } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
@@ -62,7 +62,7 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="wrap site-foot__copy">
-    © {year} Guía Montilla · Guía local editada · Datos contrastados con fuentes públicas
+    © {year} {LEGAL.owner} · {SITE.name}
     <span class="site-foot__credit">
       Creado por <a href={`${base}negocio/kyvera-digital/`}>Kyvera Digital</a>
     </span>

@@ -10,6 +10,7 @@ import {
   buildArticleSchemas,
   trimMeta,
 } from "../../lib/blog-seo";
+import { listingHref } from "../../lib/listing-quality";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -90,7 +91,7 @@ const schemas = buildArticleSchemas({
             <ul>
               {related.map((b) => (
                 <li>
-                  <a href={`${base}negocio/${b.slug}/`}>{b.name}</a>
+                  <a href={listingHref(b, base)}>{b.name}</a>
                 </li>
               ))}
             </ul>

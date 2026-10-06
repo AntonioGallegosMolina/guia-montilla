@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { LEGAL, SITE } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
-const updated = "6 de julio de 2026";
+const updated = "7 de octubre de 2026";
 ---
 
 <Layout
@@ -25,8 +25,9 @@ const updated = "6 de julio de 2026";
       <h2>1. Titular del sitio web</h2>
       <p>
         En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio
-        Electrónico (LSSI-CE), se informa que el titular de este sitio web es <strong>{LEGAL.owner}</strong>, con
-        domicilio a efectos de comunicaciones en Montilla (Córdoba), España, teléfono{" "}
+        Electrónico (LSSI-CE), se informa que el titular de este sitio web es <strong>{LEGAL.owner}</strong>,{" "}
+        {LEGAL.nifLabel} <strong>{LEGAL.nif}</strong>, que opera la marca {LEGAL.tradeName}, con domicilio a efectos de
+        comunicaciones en {LEGAL.address}, teléfono{" "}
         <a href={`tel:+34${LEGAL.phone.replace(/\s/g, "")}`}>{LEGAL.phone}</a> y correo electrónico de contacto:{" "}
         <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>. El desarrollo técnico del sitio está a cargo de{" "}
         <a href={LEGAL.developerUrl} rel="noopener noreferrer" target="_blank">kyveradigital.es</a>.

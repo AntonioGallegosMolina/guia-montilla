@@ -38,7 +38,8 @@ export function initSearchBox(root) {
   if (!input || !results) return;
 
   function renderHit({ item }) {
-    const url = `${base}negocio/${item.slug}/`;
+    const path = (item.href || `negocio/${item.slug}/`).replace(/^\//, "");
+    const url = `${base}${path}`;
     const badgeLabel = item.slug === "kyvera-digital" ? "Patrocinio" : "Destacado";
     const badge = item.featured ? `<span class="finder-hit__badge">${badgeLabel}</span> ` : "";
     return `<a class="finder-hit" href="${url}" role="option">${badge}${escapeHtml(item.name)}<span>${escapeHtml(item.categoryLabel)} · ${escapeHtml(item.tagline || item.name)}</span></a>`;

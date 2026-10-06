@@ -1,6 +1,7 @@
 ---
 import categories from "../../data/categories.json";
 import { displayTagline } from "../lib/business";
+import { isStandaloneListing, listingHref } from "../lib/listing-quality";
 
 interface Business {
   slug: string;
@@ -21,6 +22,7 @@ const catLabels = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 
 const related = all
   .filter((b) => b.category === current.category && b.slug !== current.slug)
+  .filter((b) => isStandaloneListing(b))
   .sort(
     (a, b) =>
       Number(Boolean((b as { featured?: boolean }).featured)) -
@@ -37,7 +39,7 @@ if (related.length === 0) return null;
   <ul>
     {related.map((b) => (
       <li>
-        <a href={`${base}negocio/${b.slug}/`}>
+        <a href={listingHref(b, base)}>
           <strong>{b.name}</strong>
           <span>{displayTagline(b)}</span>
         </a>

@@ -5,7 +5,7 @@ import businesses from "../../data/businesses.json";
 
 const base = import.meta.env.BASE_URL;
 const totalListings = businesses.length;
-const updated = "28 de septiembre de 2026";
+const updated = "7 de octubre de 2026";
 ---
 
 <Layout
@@ -39,7 +39,8 @@ const updated = "28 de septiembre de 2026";
 
       <h2>Quién lo mantiene</h2>
       <p>
-        El titular del sitio es <strong>{LEGAL.owner}</strong>, con sede en Montilla (Córdoba). El diseño, la
+        El titular del sitio es <strong>{LEGAL.owner}</strong> ({LEGAL.nifLabel} {LEGAL.nif}), con sede en Montilla
+        (Córdoba). El diseño, la
         arquitectura web y el mantenimiento técnico los realiza{" "}
         <a href={`${base}negocio/kyvera-digital/`}>Kyvera Digital</a>, estudio de marketing y desarrollo web con sede
         en la provincia. Kyvera no es el editor de cada ficha de terceros: actúa como partner tecnológico y de

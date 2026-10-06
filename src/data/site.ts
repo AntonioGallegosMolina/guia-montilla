@@ -11,7 +11,11 @@ export const SITE = {
 };
 
 export const LEGAL = {
-  owner: "Guía Montilla",
+  owner: "Antonio Gallegos Molina",
+  nif: "31901936Q",
+  nifLabel: "NIF",
+  tradeName: "Guía Montilla",
+  address: "Montilla (Córdoba), España",
   url: "https://guiamontilla.es",
   email: "info@guiamontilla.es",
   privacyEmail: "info@guiamontilla.es",

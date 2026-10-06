@@ -48,7 +48,9 @@ function buildFaq(article) {
   const primary = article.keywords[0] ?? "Montilla";
   return [
     {
-      q: `¿Cuánto tiempo necesito para ${primary} en Montilla?`,
+      q: /montilla/i.test(primary)
+        ? `¿Cuánto tiempo hace falta para ${primary}?`
+        : `¿Cuánto tiempo hace falta para ${primary} en Montilla?`,
       a: "Con una jornada completa puedes cubrir patrimonio, una bodega y una buena comida. Si quieres visitar varias bodegas con calma, reserva dos días.",
     },
     {

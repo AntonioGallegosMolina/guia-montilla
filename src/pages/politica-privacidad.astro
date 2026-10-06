@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { LEGAL, SITE } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
-const updated = "3 de agosto de 2026";
+const updated = "7 de octubre de 2026";
 ---
 
 <Layout
@@ -25,6 +25,9 @@ const updated = "3 de agosto de 2026";
       <h2>1. Responsable del tratamiento</h2>
       <p>
         <strong>Responsable:</strong> {LEGAL.owner}<br />
+        <strong>{LEGAL.nifLabel}:</strong> {LEGAL.nif}<br />
+        <strong>Marca:</strong> {LEGAL.tradeName}<br />
+        <strong>Domicilio:</strong> {LEGAL.address}<br />
         <strong>Correo:</strong> <a href={`mailto:${LEGAL.privacyEmail}`}>{LEGAL.privacyEmail}</a><br />
         <strong>Teléfono:</strong> <a href={`tel:+34${LEGAL.phone.replace(/\s/g, "")}`}>{LEGAL.phone}</a><br />
         <strong>Sitio web:</strong> <a href={LEGAL.url}>{LEGAL.url}</a>

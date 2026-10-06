@@ -6,6 +6,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { keywordsForBusiness, CATEGORY_KEYWORDS, QUERY_TO_CATEGORIES } from "./lib/search-keywords.mjs";
+import { isStandaloneListing, listingHref } from "./lib/listing-quality.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const BIZ = join(ROOT, "data/businesses.json");
@@ -28,6 +29,8 @@ const index = businesses.map((b) => {
     category: b.category,
     categoryLabel,
     categoryUrl: `/${catSlugs[b.category] ?? b.category}/`,
+    href: listingHref(b),
+    standalone: isStandaloneListing(b),
     featured: Boolean(b.featured),
     keywords,
     searchBlob: [b.name, categoryLabel, b.tagline, ...(b.placeTypes ?? []), ...keywords]

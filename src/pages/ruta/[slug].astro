@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import routes from "../../../data/routes.json";
+import businesses from "../../../data/businesses.json";
+import { listingHref } from "../../lib/listing-quality";
 
 export function getStaticPaths() {
   return routes.map((route) => ({
@@ -11,6 +13,10 @@ export function getStaticPaths() {
 
 const { route } = Astro.props;
 const base = import.meta.env.BASE_URL;
+function stopHref(slug) {
+  const match = businesses.find((b) => b.slug === slug);
+  return match ? listingHref(match, base) : `${base}negocio/${slug}/`;
+}
 const isHike = route.type === "senderismo";
 const metaBits = [
   route.duration,
@@ -56,7 +62,7 @@ const metaBits = [
         {route.stops.map((s) => (
           <li>
             {s.slug ? (
-              <a href={`${base}negocio/${s.slug}/`}>{s.name}</a>
+              <a href={stopHref(s.slug)}>{s.name}</a>
             ) : (
               s.name
             )}

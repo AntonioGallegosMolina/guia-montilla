@@ -4,7 +4,7 @@
  * No duplica dirección, teléfono ni horarios (ya están en la ficha).
  */
 
-const SLUG_EXTRA = {
+export const SLUG_EXTRA = {
   "kyvera-digital":
     "Agencia de marketing digital, diseño web, SEO e IA con sede en Montilla. Montan webs, posicionamiento local y automatización para pymes de la Campiña Sur y el resto de España. Son el equipo detrás de Guía Montilla.",
   "gestion-de-recursos-a-empresas":

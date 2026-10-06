@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { LEGAL } from "../data/site";
 
 const base = import.meta.env.BASE_URL;
-const updated = "26 de septiembre de 2026";
+const updated = "7 de octubre de 2026";
 ---
 
 <Layout
@@ -22,13 +22,20 @@ const updated = "26 de septiembre de 2026";
     <div class="wrap legal-prose">
       <p class="legal-updated">Última actualización: {updated}</p>
 
-      <h2>1. ¿Qué son las cookies?</h2>
+      <h2>1. Responsable</h2>
+      <p>
+        El responsable del uso de cookies en este sitio es <strong>{LEGAL.owner}</strong>, {LEGAL.nifLabel}{" "}
+        {LEGAL.nif}, titular de {LEGAL.tradeName}. Contacto:{" "}
+        <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>.
+      </p>
+
+      <h2>2. ¿Qué son las cookies?</h2>
       <p>
         Las cookies son pequeños archivos que se almacenan en tu dispositivo cuando visitas una web. Permiten recordar
         preferencias, mantener la sesión o analizar el uso del sitio.
       </p>
 
-      <h2>2. ¿Qué cookies usamos?</h2>
+      <h2>3. ¿Qué cookies usamos?</h2>
 
       <h3>Cookies técnicas (necesarias)</h3>
       <p>Son imprescindibles para el funcionamiento básico del sitio. No requieren consentimiento.</p>
@@ -97,7 +104,7 @@ const updated = "26 de septiembre de 2026";
         </tbody>
       </table>
 
-      <h2>3. Cómo gestionar las cookies</h2>
+      <h2>4. Cómo gestionar las cookies</h2>
       <p>
         Puedes eliminar o bloquear cookies desde la configuración de tu navegador. Ten en cuenta que bloquear cookies
         técnicas puede afectar al funcionamiento del sitio.
@@ -109,7 +116,7 @@ const updated = "26 de septiembre de 2026";
         <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="noopener noreferrer" target="_blank">Edge</a></li>
       </ul>
 
-      <h2>4. Retirar el consentimiento</h2>
+      <h2>5. Retirar el consentimiento</h2>
       <p>
         Si deseas cambiar tu elección, borra las cookies del sitio en tu navegador o pulsa el botón siguiente:
       </p>
@@ -117,7 +124,7 @@ const updated = "26 de septiembre de 2026";
         <button type="button" class="btn btn--small" id="reset-cookie-consent">Restablecer preferencias de cookies</button>
       </p>
 
-      <h2>5. Más información</h2>
+      <h2>6. Más información</h2>
       <p>
         Consulta también nuestra <a href={`${base}politica-privacidad/`}>política de privacidad</a> o escríbenos a{" "}
         <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>.

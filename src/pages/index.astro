@@ -15,6 +15,7 @@ import {
   HOME_SECTION_IDS,
   photoForCategory,
 } from "../lib/categoryImages";
+import { listingHref } from "../lib/listing-quality";
 
 const lead =
   businesses.find((b) => b.slug === "kyvera-digital") ??
@@ -29,6 +30,10 @@ const latestNews = [...news]
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 4);
 const base = import.meta.env.BASE_URL;
+function stopHref(slug: string) {
+  const match = businesses.find((b) => b.slug === slug);
+  return match ? listingHref(match, base) : `${base}negocio/${slug}/`;
+}
 
 const homeSections = HOME_SECTION_IDS.map((id) => {
   if (id === "negocios") {
@@ -152,7 +157,7 @@ const latestPosts = (await getCollection("blog"))
               {featuredRoute.stops.map((s) => (
                 <li>
                   {s.slug ? (
-                    <a href={`${base}negocio/${s.slug}/`}>{s.name}</a>
+                    <a href={stopHref(s.slug)}>{s.name}</a>
                   ) : (
                     s.name
                   )}
@@ -209,7 +214,7 @@ const latestPosts = (await getCollection("blog"))
                 </time>
                 <div>
                   <h2 class="agenda-item__title">
-                    <a href={`${base}noticias/${item.slug}/`}>{item.title}</a>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
                   </h2>
                   <p class="agenda-item__excerpt">{item.source}{item.excerpt ? ` · ${item.excerpt.slice(0, 100)}…` : ""}</p>
                 </div>

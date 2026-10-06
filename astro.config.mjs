@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { isStandaloneListing } from "./scripts/lib/listing-quality.mjs";
 
 const root = dirname(fileURLToPath(import.meta.url));
 
@@ -17,17 +18,41 @@ function envFromFile(name) {
 const site = envFromFile("SITE_URL") ?? process.env.SITE_URL ?? "https://guiamontilla.es";
 const basePath = envFromFile("BASE_PATH") ?? process.env.BASE_PATH ?? "/";
 
+const businesses = JSON.parse(readFileSync(join(root, "data/businesses.json"), "utf8"));
+const news = JSON.parse(readFileSync(join(root, "data/news.json"), "utf8"));
+
+const redirects = {
+  "/feria": "/rutas/",
+  "/eventos": "/noticias/",
+};
+
+for (const item of news) {
+  if (!item?.slug) continue;
+  redirects[`/noticias/${item.slug}/`] = "/noticias/";
+}
+
+for (const business of businesses) {
+  if (isStandaloneListing(business)) continue;
+  redirects[`/negocio/${business.slug}/`] = `/${business.category}/#${business.slug}`;
+}
+
 export default defineConfig({
   site,
   base: basePath === "/" ? undefined : basePath,
   output: "static",
-  redirects: {
-    "/feria": "/rutas/",
-    "/eventos": "/noticias/",
-  },
+  redirects,
   integrations: [
     sitemap({
-      filter: (page) => !page.includes("/404") && !page.includes("/interno/"),
+      filter: (page) => {
+        if (page.includes("/404") || page.includes("/interno/")) return false;
+        try {
+          const path = new URL(page).pathname;
+          if (/\/noticias\/.+/.test(path)) return false;
+        } catch {
+          return true;
+        }
+        return true;
+      },
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
@@ -38,7 +63,7 @@ export default defineConfig({
           item.changefreq = "monthly";
         }
         if (url.includes("/noticias/")) {
-          item.priority = url.endsWith("/noticias/") ? 0.88 : 0.8;
+          item.priority = url.endsWith("/noticias/") ? 0.88 : 0.75;
           item.changefreq = "daily";
         }
         return item;

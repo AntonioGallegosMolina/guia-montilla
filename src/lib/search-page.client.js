@@ -22,7 +22,8 @@ function renderRow(item, base) {
   const featured = item.featured
     ? `<span class="pill">${featuredLabel}</span> `
     : "";
-  const url = `${base}negocio/${item.slug}/`;
+  const path = (item.href || `negocio/${item.slug}/`).replace(/^\//, "");
+  const url = `${base}${path}`;
   return `<li class="index-row fade-in">
   <div class="index-row__body">
     <h3 class="index-row__title">${featured}<a href="${url}">${escapeHtml(item.name)}</a></h3>

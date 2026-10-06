@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import AdSenseLoader from "../components/AdSenseLoader.astro";
 import GoogleConsent from "../components/GoogleConsent.astro";
-import { ADS, SEO } from "../data/site";
+import { ADS, LEGAL, SEO } from "../data/site";
 
 interface Props {
   title?: string;
@@ -73,7 +73,7 @@ const schemas = jsonLd
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-    <meta name="author" content="Guía Montilla" />
+    <meta name="author" content={LEGAL.owner} />
     <meta name="geo.region" content="ES-CO" />
     <meta name="geo.placename" content="Montilla, Córdoba" />
     <meta name="geo.position" content="37.5863;-4.6381" />

@@ -16,9 +16,10 @@ import {
 } from "../../lib/seo";
 import { displayTagline } from "../../lib/business";
 import { NEGOCIO_CATEGORY_IDS } from "../../lib/categoryImages";
+import { isStandaloneListing } from "../../lib/listing-quality";
 
 export function getStaticPaths() {
-  return businesses.map((business) => ({
+  return businesses.filter(isStandaloneListing).map((business) => ({
     params: { slug: business.slug },
     props: { business },
   }));

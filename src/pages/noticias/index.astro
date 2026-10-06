@@ -13,7 +13,7 @@ const bySource = sorted.reduce<Record<string, typeof sorted>>((acc, item) => {
 }, {});
 
 const description =
-  "Noticias de Montilla (Córdoba) recogidas automáticamente de Montilla Digital y el Ayuntamiento. Resumen y enlace a la fuente original.";
+  "Titulares de Montilla (Córdoba) con enlace al medio original: Montilla Digital y el Ayuntamiento."
 ---
 
 <Layout
@@ -28,7 +28,7 @@ const description =
       <p class="news-mast__kicker">Actualidad · Campiña Sur</p>
       <h1>Noticias de Montilla</h1>
       <p class="news-mast__deck">
-        Lo que pasa en el pueblo, recogido de fuentes públicas. Cada ficha resume la noticia y enlaza al medio original.
+        Titulares locales con enlace al medio original. El artículo completo está siempre en la fuente.
       </p>
       <p class="news-mast__count">{sorted.length} noticias indexadas</p>
     </div>
@@ -48,7 +48,7 @@ const description =
                 </time>
                 <div class="news-list__body">
                   <h3>
-                    <a href={`${base}noticias/${item.slug}/`}>{item.title}</a>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
                   </h3>
                   {item.excerpt && <p>{item.excerpt}</p>}
                 </div>

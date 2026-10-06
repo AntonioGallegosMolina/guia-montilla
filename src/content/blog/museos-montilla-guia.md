@@ -15,7 +15,7 @@ relatedSlugs:
   - "teatro-garnelo"
   - "plaza-de-munda"
 faq:
-  - q: "¿Cuánto tiempo necesito para museos Montilla en Montilla?"
+  - q: "¿Cuánto tiempo hace falta para museos Montilla?"
     a: "Con una jornada completa puedes cubrir patrimonio, una bodega y una buena comida. Si quieres visitar varias bodegas con calma, reserva dos días."
   - q: "¿Es necesario reservar bodegas y restaurantes?"
     a: "Sí, especialmente viernes, sábado y festivos. Las visitas guiadas tienen aforo limitado y las tabernas más conocidas llenan pronto."
@@ -32,6 +32,11 @@ Montilla no vive de una sola postal. Puedes empezar por [Museo Histórico Local 
 Si buscas museos en Montilla y cómo visitarlos, esta secuencia suele funcionar: primera hora para patrimonio y orientación, media mañana para visita técnica, mediodía para mesa, y tarde para paseo o compras. En la práctica, la parada en la [Oficina de Turismo de Montilla](/negocio/oficina-turismo-montilla/) evita errores de horarios, porque algunos espacios adaptan pases según temporada.
 
 El bloque histórico se disfruta mejor con dos referencias claras: [Castillo de Montilla](/negocio/castillo-montilla/) y [Museo Histórico Local de Montilla](/negocio/museo-historico-local-de-montilla/). Después, conviene bajar el ritmo y pasar por una taberna del centro para aterrizar lo visto en la copa. Si el viaje es en fin de semana, reserva con antelación y deja márgenes entre actividades; el plan rígido suele romperse en días de alta demanda.
+
+## Claves locales que marcan diferencia
+El vino en Montilla no es un extra para turistas: es parte del ritmo diario. En muchas tabernas, pedir una copa de fino o amontillado abre conversación sobre añadas, botas y estilos de crianza biológica u oxidativa sin necesidad de protocolo. La Campiña Sur marca el paisaje y también la lógica gastronómica: platos sencillos, producto local y vinos que funcionan en mesa sin disfraz. Quien llega por primera vez suele sorprenderse con la variedad entre bodegas históricas y proyectos más contemporáneos. La clave práctica está en reservar visitas con hora, alternar cata y comida, y dejar hueco para comprar vino directamente en bodega con mejor asesoramiento.
+
+En términos prácticos, pide recomendaciones por estilo y momento del día: fino para aperitivo, amontillado cuando la cocina gana peso y opciones más viejas para sobremesa tranquila. Si te interesa comparar casas históricas, combina [Bodegas Alvear](/negocio/bodegas-alvear/) con [Bodegas Pérez Barquero](/negocio/bodegas-perez-barquero/) y, cuando quieras una visión diferente, añade [Bodegas Robles](/negocio/bodegas-robles/) por su enfoque de sostenibilidad.
 
 Para entender la parte patrimonial de Montilla conviene leer la ciudad en capas: pasado medieval, peso de los linajes nobiliarios y memoria religiosa muy viva. El castillo, los templos y los edificios civiles forman un recorrido compacto que se hace bien a pie. No es una ciudad-museo congelada; conviven vida de barrio, comercio local y agenda cultural, especialmente cuando se acerca la feria de septiembre. Esa mezcla evita visitas artificiales y permite que cada parada tenga contexto real. Si te interesa la historia, merece la pena combinar monumentos con una visita al museo local para ordenar fechas y personajes antes de seguir ruta.
 

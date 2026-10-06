@@ -971,6 +971,7 @@ p { text-wrap: pretty; margin: 0 0 1em; }
 .index-list { list-style: none; margin: 0; padding: 0; }
 
 .index-row {
+  scroll-margin-top: 5.5rem;
   display: grid;
   grid-template-columns: 7.5rem 1fr auto;
   gap: var(--space-2);
